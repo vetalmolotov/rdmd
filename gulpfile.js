@@ -1,10 +1,11 @@
 const gulp = require('gulp');
 const concat = require('gulp-concat');
-var nodeSass = require('gulp-sass');
+const nodeSass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const pugTemplate = require('gulp-pug');
 
 
 nodeSass.compiler = require('node-sass');
@@ -30,23 +31,36 @@ function sass() {
 				.pipe(browserSync.stream());
 }
 
+function pug() {
+	return gulp
+				.src('./src/pug/*.pug')
+				.pipe(pugTemplate({
+					pretty: true
+				}))
+				.pipe(gulp.dest('./build/'));
+}
+
 function watch() {
 	browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: "./build/"
         }
     });
 	gulp.watch('./src/sass/**/*.scss', sass);
-	gulp.watch('./**/*.html', browserSync.reload);
+	gulp.watch('./src/pug/**/*.pug', pug);
+	gulp.watch('./build/*.html', browserSync.reload);
 }
 
 function clean() {
 	return del(['build/*']);
 }
 
-//gulp.task('sass', sass);
+gulp.task('sass', sass);
+gulp.task('pug', pug);
 gulp.task('watch', watch);
 
-gulp.task('build', gulp.series(clean, sass));
+gulp.task('build', gulp.series(clean,
+									gulp.parallel(sass, pug)
+								));
 gulp.task('dev', gulp.series('build', 'watch'));
 
