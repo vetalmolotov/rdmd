@@ -6,6 +6,7 @@ const cleanCSS = require('gulp-clean-css');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const pugTemplate = require('gulp-pug');
+const imagemin = require('gulp-imagemin');
 
 
 nodeSass.compiler = require('node-sass');
@@ -39,6 +40,12 @@ function pug() {
 				}))
 				.pipe(gulp.dest('./build/'));
 }
+function img() {
+	return gulp
+		.src('./src/img/*')
+		.pipe(imagemin())
+		.pipe(gulp.dest('./build/img/'));
+}
 
 function watch() {
 	browserSync.init({
@@ -48,6 +55,7 @@ function watch() {
     });
 	gulp.watch('./src/sass/**/*.scss', sass);
 	gulp.watch('./src/pug/**/*.pug', pug);
+    gulp.watch('./src/img/*', img);
 	gulp.watch('./build/*.html', browserSync.reload);
 }
 
@@ -58,9 +66,10 @@ function clean() {
 gulp.task('sass', sass);
 gulp.task('pug', pug);
 gulp.task('watch', watch);
+gulp.task('img', img);
 
 gulp.task('build', gulp.series(clean,
-									gulp.parallel(sass, pug)
+									gulp.parallel(sass, pug, img)
 								));
 gulp.task('dev', gulp.series('build', 'watch'));
 

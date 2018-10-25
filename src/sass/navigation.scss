@@ -4,6 +4,49 @@
   width: 198px;
   box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.09);
   background-image: radial-gradient(1614px 1614px at 50% 0%,#3C52C9 0,#6B7DEA 100%);
+  display: flex;
+  flex-direction: column;
+
+  .logo {
+    width: 198px;
+    height: 58px;
+    padding: 0 27px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+
+    &-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      background-image: radial-gradient(38px 38px at 162.5% 70.83%, #6B6BEA 0%, #3C92C9 100%);
+
+      img {
+        width: 10px;
+        height: 15px;
+      }
+    }
+    &-text {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      h3 {
+        margin: 0 5px 0 12px;
+        color: $white;
+      }
+      span {
+        font-size: 8px;
+        color: $white;
+        align-self: flex-end;
+      }
+    }
+  }
 
   .navigation {
     &-list {

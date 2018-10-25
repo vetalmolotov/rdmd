@@ -1,4 +1,9 @@
 div.toolbar
-    div.search-form search form
-    div.info-block 4 services enregistrés
-    div.button ADD
+    div.search-form
+        input.search-form__input(placeholder="Search for something…")
+        input.search-form__button(type="button")
+    div.info-block
+            span.info-block__count 4
+            span.info-block__text &nbsp;services enregistrés
+    div.button
+        input.button__add(type="button" value="ADD")

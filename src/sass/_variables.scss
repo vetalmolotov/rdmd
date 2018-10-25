@@ -5,7 +5,7 @@ $backgroundColorEven: #8496ff;
 
 
 // specific text colors
-$textColorMain: #000;
+$textColorMain: rgba(0, 0, 0, 0.5);;
 $colorConnected: #86ee82;
 $colorDisconnected: #ff5867;
 $buttonColor: #3c52c9;
@@ -15,3 +15,5 @@ $buttonColor: #3c52c9;
 $white: #fff;
 $black: #000;
 
+// shadows
+$shadowMain: 0 3px 3px rgba(0, 0, 0, 0.04);
