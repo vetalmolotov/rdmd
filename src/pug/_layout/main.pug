@@ -3,5 +3,8 @@ html(lang='en')
 	head
 		title RDMD
 		link(rel="stylesheet" type="text/css" href="css/styles.css")
+		link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet")
 	body
-		block content
+		div.wrapper
+			include ../_parts/menu
+			block content

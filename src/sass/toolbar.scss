@@ -1,0 +1,23 @@
+@import "variables";
+
+.toolbar {
+  padding: 0 38px;
+  margin: 26px 0 0;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+
+  .search-form {
+    max-width: 277px;
+    flex-grow: 2;
+  }
+  .info-block {
+    flex-grow: 3;
+  }
+  .button {
+    flex-grow: 1;
+  }
+}

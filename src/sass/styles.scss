@@ -1,6 +1,33 @@
 @import "variables";
+@import "navigation";
+@import "header";
+@import "toolbar";
+@import "itemlist";
 
-
-body {
-	background: $bodyColor
+html, body, .wrapper {
+  height: 100%;
 }
+body {
+  background: $bodyColor;
+  font-family: "Source Sans Pro";
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+
+  .content {
+    width: calc(100% - 198px);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
